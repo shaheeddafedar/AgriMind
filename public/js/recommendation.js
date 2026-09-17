@@ -394,18 +394,11 @@ document.addEventListener('DOMContentLoaded', () => {
         profitPotential;
 
 
-    // ==========================================
-    // SUSTAINABILITY
-    // ==========================================
+    const sustainabilityElement = document.getElementById('sustainability');
 
-    // There is currently no actual
-    // sustainability model in the system.
-    // Therefore we do not show a random score.
-
-    document.getElementById(
-        'sustainability'
-    ).textContent =
-        'Approx.';
+    if (sustainabilityElement) {
+        sustainabilityElement.textContent = 'Approx.';
+    }
 
 
     // ==========================================
