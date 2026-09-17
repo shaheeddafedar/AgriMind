@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Irrigation - AgriMind</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/smart-irrigation.css">
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="container">
+
+            <a href="/" class="logo">
+                <i class="fas fa-leaf"></i> AgriMind
+            </a>
+
+            <button class="mobile-menu-toggle"
+                    id="mobile-menu-toggle">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+
+            <ul class="nav-links" id="nav-links">
+    <li><a href="/"><%= __('nav_home') %></a></li>
+
+    <% if (isLoggedIn) { %>
+        <li><a href="/dashboard"><%= __('nav_dashboard') %></a></li>
+        <li><a href="/feedback"><%= __('nav_feedback') %></a></li>
+    <% } %>
+
+    <li><a href="/irrigation" class="active">Irrigation</a></li>
+
+    <li><a href="/about"><%= __('nav_about') %></a></li>
+    <li><a href="/analytics"><%= __('nav_analytics') %></a></li>
+</ul>
+
+
+            <!-- Authentication -->
+
+            <div class="auth-buttons">
+
+                <% if (isLoggedIn && user) { %>
+
+                    <div class="user-nav-profile">
+
+                        <img
+                            src="<%= user.profilePhoto %>"
+                            alt="User"
+                            class="nav-avatar"
+                        >
+
+                        <span class="nav-username">
+
+                            <%= user.name %>
+
+                            <i class="fas fa-caret-down"></i>
+
+                        </span>
+
+
+                        <div class="user-dropdown-menu">
+
+                            <a href="/profile">
+                                <i class="fas fa-user-circle"></i>
+                                View Profile
+                            </a>
+
+                            <a href="/dashboard">
+                                <i class="fas fa-seedling"></i>
+                                Dashboard
+                            </a>
+
+
+                            <form
+                                action="/logout"
+                                method="POST"
+                                style="margin: 0;"
+                            >
+
+                                <button
+                                    type="submit"
+                                    style="font-family: inherit;"
+                                >
+
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                <% } %>
+
+            </div>
+
+
+            <!-- Language -->
+
+            <li
+                class="dropdown"
+                style="list-style: none; margin-left: 20px;"
+            >
+
+                <a href="#" class="dropbtn">
+
+                    <i class="fas fa-globe"></i>
+                    Language
+
+                </a>
+
+
+                <div class="dropdown-content">
+
+                    <a href="/lang/en">English</a>
+
+                    <a href="/lang/hi">
+                        हिन्दी (Hindi)
+                    </a>
+
+                    <a href="/lang/kn">
+                        ಕನ್ನಡ (Kannada)
+                    </a>
+
+                </div>
+
+            </li>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="page-content">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="page-header irrigation-page-header">
+
+            <div class="container">
+
+                <h1><i class="fas fa-tint irrigation-title-icon"></i> Smart Irrigation</h1>
+
+                <p>
+                    Monitor soil moisture and determine whether irrigation is required.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= IRRIGATION CONTENT ================= -->
+
+        <div class="container irrigation-content">
+
+
+            <!-- INPUT CARD -->
+
+            <div class="irrigation-card">
+
+                <div class="irrigation-card-header">
+
+                    <i class="fas fa-water"></i>
+
+                    <div>
+
+                        <h2>
+                            Check Irrigation Requirement
+                        </h2>
+
+                        <p>
+                            Enter the crop and current soil moisture level.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="irrigation-form">
+
+
+                    <!-- CROP -->
+
+                    <div class="form-group">
+
+                        <label for="irrigation-crop">
+                            <i class="fas fa-seedling"></i>
+                            Crop
+                        </label>
+
+                        <select id="irrigation-crop" required>
+    <option value="">Select Crop</option>
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="barley">Barley</option>
+    <option value="blackgram">Blackgram</option>
+    <option value="blackpepper">Black Pepper</option>
+    <option value="brinjal">Brinjal</option>
+    <option value="cabbage">Cabbage</option>
+    <option value="cardamom">Cardamom</option>
+    <option value="cauliflower">Cauliflower</option>
+    <option value="chickpea">Chickpea</option>
+    <option value="coconut">Coconut</option>
+    <option value="coffee">Coffee</option>
+    <option value="coriander">Coriander</option>
+    <option value="cotton">Cotton</option>
+    <option value="garlic">Garlic</option>
+    <option value="grapes">Grapes</option>
+    <option value="horsegram">Horsegram</option>
+    <option value="jute">Jute</option>
+    <option value="kidneybeans">Kidney Beans</option>
+    <option value="lentil">Lentil</option>
+    <option value="maize">Maize</option>
+    <option value="mango">Mango</option>
+    <option value="mothbeans">Moth Beans</option>
+    <option value="mungbean">Mung Bean</option>
+    <option value="muskmelon">Muskmelon</option>
+    <option value="okra">Okra</option>
+    <option value="onion">Onion</option>
+    <option value="orange">Orange</option>
+    <option value="papaya">Papaya</option>
+    <option value="pigeonpeas">Pigeon Peas</option>
+    <option value="pomegranate">Pomegranate</option>
+    <option value="potato">Potato</option>
+    <option value="ragi">Ragi</option>
+    <option value="rapeseed">Rapeseed</option>
+    <option value="rice">Rice</option>
+    <option value="sorghum">Sorghum</option>
+    <option value="soybean">Soybean</option>
+    <option value="sunflower">Sunflower</option>
+    <option value="sweet_potato">Sweet Potato</option>
+    <option value="tomato">Tomato</option>
+    <option value="turmeric">Turmeric</option>
+    <option value="watermelon">Watermelon</option>
+    <option value="wheat">Wheat</option>
+</select>
+
+                    </div>
+
+
+                    <!-- SOIL MOISTURE -->
+
+                    <div class="form-group">
+
+                        <label for="soil-moisture">
+
+                            <i class="fas fa-tint"></i>
+
+                            Soil Moisture (%)
+
+                        </label>
+
+                        <input
+                            type="number"
+                            id="soil-moisture"
+                            min="0"
+                            max="100"
+                            step="0.1"
+                            placeholder="e.g. 28"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn irrigation-check-btn"
+                        id="irrigation-check-btn"
+                    >
+
+                        <i class="fas fa-search"></i>
+
+                        Check Irrigation
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <div
+                id="irrigation-result"
+                class="irrigation-card irrigation-result"
+                style="display: none;"
+            >
+
+                <div class="result-status-icon"
+                     id="result-status-icon">
+
+                    <i class="fas fa-tint"></i>
+
+                </div>
+
+
+                <h2 id="irrigation-status">
+                    Irrigation Status
+                </h2>
+
+
+                <p
+                    id="irrigation-message"
+                    class="irrigation-message"
+                >
+                </p>
+
+
+                <div class="irrigation-metrics">
+
+
+                    <div class="irrigation-metric">
+
+                        <span class="metric-label">
+                            Crop
+                        </span>
+
+                        <strong id="result-crop">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="irrigation-metric">
+
+                        <span class="metric-label">
+                            Soil Moisture
+                        </span>
+
+                        <strong>
+                            <span id="result-moisture">-</span>%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="irrigation-metric">
+
+                        <span class="metric-label">
+                            Required Threshold
+                        </span>
+
+                        <strong>
+                            <span id="result-threshold">-</span>%
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+
+                <div class="footer-brand">
+
+                    <a href="/" class="logo">
+
+                        <i class="fas fa-leaf"></i>
+
+                        AgriMind
+
+                    </a>
+
+                    <p>
+                        Empowering farmers with AI-driven agricultural insights.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-links">
+
+
+                    <div class="footer-column">
+
+                        <h4>Quick Links</h4>
+
+                        <ul>
+
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+
+                            <li>
+                                <a href="/dashboard">
+                                    Dashboard
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/about">
+                                    About
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="footer-column">
+
+                        <h4>Resources</h4>
+
+                        <ul>
+
+                            <li>
+                                <a href="/analytics">
+                                    Analytics
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/feedback">
+                                    Feedback
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/irrigation">
+                                    Smart Irrigation
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="footer-column">
+
+                        <h4>Contact</h4>
+
+                        <ul>
+
+                            <li>
+                                <a href="mailto:support@agrimind.dev">
+                                    support@agrimind.dev
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="tel:+911234567890">
+                                    +91 123 456 7890
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; 2025 AgriMind. All Rights Reserved.
+                </p>
+
+
+                <div class="social-icons">
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <a href="#" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="/js/smart-irrigation.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>

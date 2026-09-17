@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | AgriMind</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/signup.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a href="/" class="logo"><i class="fas fa-leaf"></i> AgriMind</a>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="/">Home</a></li>
+
+                <% if (isLoggedIn) { %>
+                    <li id="dashboard-link"><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/feedback">Feedback</a></li>
+                <% } else { %>
+                    <li id="dashboard-link" style="display:none;"><a href="/dashboard">Dashboard</a></li>
+                <% } %>
+
+                <li><a href="/about">About</a></li>
+                <li><a href="/analytics">Analytics</a></li>
+            </ul>
+            
+        <div class="auth-buttons">
+    <% if (isLoggedIn && user) { %>
+        <div class="user-nav-profile">
+            <img src="<%= user.profilePhoto %>" alt="User" class="nav-avatar">
+            <span class="nav-username"><%= user.name %> <i class="fas fa-caret-down"></i></span>
+            
+            <div class="user-dropdown-menu">
+                <a href="/profile"><i class="fas fa-user-circle"></i> View Profile</a>
+                <a href="/dashboard"><i class="fas fa-seedling"></i> Dashboard</a>
+                <!--<a href="/download-report"><i class="fas fa-file-pdf"></i> Download Report</a>-->
+                <form action="/logout" method="POST" style="margin: 0;">
+                    <button type="submit" style="font-family: inherit;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </form>
+            </div>
+        </div>
+    <% } else { %>
+        <a href="#" class="btn btn-secondary" id="login-btn">Log In</a>
+        <a href="/signup" class="btn" id="register-btn">Sign Up</a>
+    <% } %>
+</div>
+        </div>
+    </header>
+
+    <section class="signup-hero">
+        <div class="container">
+            <h1>Join the Smart Farming Revolution</h1>
+            <p>Create your account and unlock AI-powered crop recommendations</p>
+        </div>
+    </section>
+
+  <main class="container page-content">
+   <div class="form-container" style="max-width: 500px; margin: 4rem auto;">
+
+    <% if (errorMessage) { %>
+        <div class="error-message"><%= errorMessage %></div>
+    <% } %>
+
+<div class="form-container" style="max-width: 500px; margin: 4rem auto;">
+    <header class="page-header">
+        <h1>Create Your AgriMind Account</h1>
+        <p>Start your smart farming journey today.</p>
+    </header>
+
+    <% if (errorMessage) { %>
+        <div class="error-message"><%= errorMessage %></div>
+    <% } %>
+
+    <form action="/signup" method="POST" class="auth-form" enctype="multipart/form-data">
+        
+        <div class="form-group">
+            <label for="name"><i class="fas fa-user"></i> Full Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
+        </div>
+
+        <div class="form-group">
+            <label for="location"><i class="fas fa-map-marker-alt"></i> Location</label>
+            <input type="text" id="location" name="location" placeholder="e.g. Punjab, India" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="10 Digit Mobile Number" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="profilePhoto"><i class="fas fa-camera"></i> Profile Photo</label>
+            <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" style="padding: 10px; border: 1px dashed #adb5bd; width: 100%;">
+        </div>
+
+        <div class="form-group password-group">
+            <label for="password"><i class="fas fa-lock"></i> Password</label>
+            <div style="position: relative;">
+                <input type="password" id="password" name="password" placeholder="Min 6 characters" style="width: 100%;" required>
+                <i class="fas fa-eye toggle-password" id="toggleSignupPassword"></i>
+            </div>
+        </div>
+
+        <div class="form-features" style="display: flex; justify-content: space-between; gap: 10px; margin: 1.5rem 0;">
+            <div class="feature-item" style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
+                <i class="fas fa-check-circle" style="color: #2E8B57;"></i>
+                <span>AI Recommendations</span>
+            </div>
+            <div class="feature-item" style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
+                <i class="fas fa-check-circle" style="color: #2E8B57;"></i>
+                <span>Farm Analytics</span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-full">
+            <i class="fas fa-rocket"></i> Create Account
+        </button>
+    </form>
+</div>
+</div>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="#" id="login-link">Log In here</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="logo"><i class="fas fa-leaf"></i> AgriMind</a>
+                    <p>Empowering farmers with AI-driven agricultural insights.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/dashboard">Dashboard</a></li>
+                            <li><a href="/about">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="/analytics">Analytics</a></li>
+                            <li><a href="/feedback">Feedback</a></li>
+                            <li><a href="#">Help Center</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="mailto:support@agrimind.dev">support@agrimind.dev</a></li>
+                            <li><a href="tel:+911234567890">+91 123 456 7890</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AgriMind. All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div id="login-modal-overlay" class="login-modal-overlay hidden">
+        <div class="login-modal">
+            <button class="close-btn">&times;</button>
+            <h2>Welcome to AgriMind</h2>
+            <p>Sign in to continue to your dashboard.</p>
+            
+            <form id="email-login-form" class="modal-form" method="POST" action="/login">
+                <div class="form-group">
+                    <label for="modal-email">Email Address</label>
+                    <input type="email" id="modal-email" name="email" placeholder="you@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="modal-password">Password</label>
+                    <div style="position: relative;">
+                        <input type="password" id="modal-password" name="password" placeholder="password" required>
+                        <i class="fas fa-eye toggle-password" id="toggleLoginPassword"></i>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-full">Continue with Email</button>
+            </form>
+            
+            <div class="divider"></div>
+            <p class="terms-notice">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+        </div>
+    </div>
+    
+    <script src="/js/main.js"></script>
+    <script>
+        document.getElementById('login-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (typeof showLoginModal === 'function') {
+                showLoginModal();
+            }
+        });
+    </script>
+</body>
+</html>

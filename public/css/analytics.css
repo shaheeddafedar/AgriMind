@@ -1,0 +1,266 @@
+/* =========================================
+   ANALYTICS PAGE
+========================================= */
+
+.page-content {
+    padding: 0 0 60px;
+}
+
+
+/* =========================================
+   FULL WIDTH PAGE HEADER
+========================================= */
+
+.page-header {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(46, 139, 87, 0.9),
+            rgba(244, 164, 96, 0.8)
+        ),
+        url('https://images.pexels.com/photos/21393/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+        no-repeat center center / cover;
+
+    color: #ffffff;
+
+    padding: 80px 0;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+    /*padding: 130px;*/
+    padding-bottom: 181px;
+}
+
+
+.header-content h1 {
+    font-size: 3rem;
+
+    margin-bottom: 15px;
+
+    font-weight: 700;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.header-content p {
+    font-size: 1.2rem;
+
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    line-height: 1.7;
+
+    opacity: 0.95;
+}
+
+
+/* =========================================
+   GAP BETWEEN HEADER AND CONTENT
+========================================= */
+
+.analytics-content {
+    padding-top: 40px;
+}
+
+
+/* =========================================
+   FILTER BAR
+========================================= */
+
+.filter-bar {
+    background: #ffffff;
+
+    padding: 25px 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    margin-bottom: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-left: 4px solid #2E8B57;
+}
+
+
+.filter-bar label {
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    color: #333;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.filter-bar label i {
+    color: #2E8B57;
+}
+
+
+.filter-bar select {
+    padding: 10px 15px;
+
+    border: 2px solid #e5e5e5;
+
+    border-radius: 8px;
+
+    font-size: 1rem;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    outline: none;
+}
+
+
+.filter-bar select:focus {
+    border-color: #2E8B57;
+
+    box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+}
+
+
+/* =========================================
+   ANALYTICS GRID
+========================================= */
+
+.analytics-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 30px;
+}
+
+
+/* =========================================
+   CHART CONTAINER
+========================================= */
+
+.chart-container {
+    background: #ffffff;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    border-left: 4px solid #2E8B57;
+
+    transition: all 0.3s ease;
+}
+
+
+.chart-container:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+.chart-container h3 {
+    color: #2E8B57;
+
+    font-size: 1.25rem;
+
+    font-weight: 600;
+
+    margin-bottom: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.chart-container h3 i {
+    font-size: 1.2rem;
+}
+
+
+.chart-container canvas {
+    width: 100% !important;
+
+    max-height: 350px;
+}
+
+
+/* =========================================
+   FULL WIDTH CHART
+========================================= */
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================
+   DESKTOP OPTIMIZATION
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .full-width {
+        grid-column: auto;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .page-header {
+        padding: 60px 0;
+    }
+
+
+    .header-content h1 {
+        font-size: 2.3rem;
+    }
+
+
+    .analytics-content {
+        padding-top: 30px;
+    }
+
+
+    .filter-bar {
+        padding: 20px;
+    }
+
+}
+
+.filter-bar{
+    display: none;
+}

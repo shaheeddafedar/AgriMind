@@ -1,0 +1,201 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.main-content, .sidebar-widget {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+section.main-content {
+    height: 1100px;
+}
+.main-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+}
+
+.form-group select:disabled {
+    background-color: #f1f1f1;
+}
+
+.form-group input[type="file"] {
+    padding: 5px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: -18px;
+}
+
+
+.sidebar-widget h3 {
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+.sidebar-widget h3 i {
+    margin-right: 10px;
+}
+
+#recent-recommendations .recommendation-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+#recent-recommendations .recommendation-item:last-child {
+    border-bottom: none;
+}
+.recommendation-item strong {
+    color: var(--primary-color);
+}
+
+.chatbot {
+    display: flex;
+    flex-direction: column;
+       height: 350px;        
+    width: 300%;           
+    max-width: 100%;  
+}
+
+.chat-window {
+    height: 280px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 120%;
+}
+.chat-message.bot {
+    background-color: #e9e9eb;
+    align-self: flex-start;
+}
+.chat-message.user {
+    background-color: var(--primary-color);
+    color: white;
+    align-self: flex-end;
+}
+
+.chat-input {
+    display: flex;
+    height: 50px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+.chat-input button {
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+}
+
+
+.chatbot-tips {
+    background-color: rgb(212, 212, 212);
+    padding: 8px;
+    font-size: 17px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border-radius: 2px solid black;
+}
+.chatbot-tips ul {
+    margin: 4px 0 0;
+    padding-left: 20px;
+}
+.chatbot-tips li {
+    margin-bottom: 4px;
+}
+
+
+@media (max-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Recommendation mode buttons */
+.recommendation-mode {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.recommendation-mode-btn {
+    width: 100%;
+    min-height: 50px;
+    cursor: pointer;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.recommendation-mode-btn.active {
+    opacity: 1;
+}
+
+/* Slightly larger and lower submit button */
+#recommendation-submit-btn {
+    margin-top: 10px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    min-height: 50px;
+}

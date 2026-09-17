@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us - AgriMind</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="/css/about.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+        <div class="container">
+
+            <a href="/" class="logo">
+                <i class="fas fa-leaf"></i> AgriMind
+            </a>
+
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+
+                <li>
+                    <a href="/"><%= __('nav_home') %></a>
+                </li>
+
+                <% if (isLoggedIn) { %>
+
+                    <li id="dashboard-link">
+                        <a href="/dashboard"><%= __('nav_dashboard') %></a>
+                    </li>
+
+                    <li>
+                        <a href="/feedback"><%= __('nav_feedback') %></a>
+                    </li>
+
+                <% } else { %>
+
+                    <li id="dashboard-link" style="display:none;">
+                        <a href="/dashboard"><%= __('nav_dashboard') %></a>
+                    </li>
+
+                <% } %>
+                <li><a href="/irrigation">Irrigation</a></li>
+                <li>
+                    <a href="/about"><%= __('nav_about') %></a>
+                </li>
+
+                <li>
+                    <a href="/analytics"><%= __('nav_analytics') %></a>
+                </li>
+
+            </ul>
+
+
+            <!-- Authentication -->
+
+            <div class="auth-buttons">
+
+                <% if (isLoggedIn && user) { %>
+
+                    <div class="user-nav-profile">
+
+                        <img
+                            src="<%= user.profilePhoto %>"
+                            alt="User"
+                            class="nav-avatar"
+                        >
+
+                        <span class="nav-username">
+                            <%= user.name %>
+                            <i class="fas fa-caret-down"></i>
+                        </span>
+
+                        <div class="user-dropdown-menu">
+
+                            <a href="/profile">
+                                <i class="fas fa-user-circle"></i>
+                                View Profile
+                            </a>
+
+                            <a href="/dashboard">
+                                <i class="fas fa-seedling"></i>
+                                Dashboard
+                            </a>
+
+                            <!--<a href="/download-report">
+                                <i class="fas fa-file-pdf"></i>
+                                Download Report
+                            </a>-->
+
+                            <form action="/logout" method="POST" style="margin: 0;">
+
+                                <button type="submit" style="font-family: inherit;">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                <% } else { %>
+
+                    <a href="#" class="btn btn-secondary" id="login-btn">
+                        Log In
+                    </a>
+
+                    <a href="/signup" class="btn" id="register-btn">
+                        Sign Up
+                    </a>
+
+                <% } %>
+
+            </div>
+
+
+            <!-- Language -->
+
+            <li class="dropdown" style="list-style: none; margin-left: 20px;">
+
+                <a href="#" class="dropbtn">
+                    <i class="fas fa-globe"></i>
+                    Language
+                </a>
+
+                <div class="dropdown-content">
+                    <a href="/lang/en">English</a>
+                    <a href="/lang/hi">हिन्दी (Hindi)</a>
+                    <a href="/lang/kn">ಕನ್ನಡ (Kannada)</a>
+                </div>
+
+            </li>
+
+        </div>
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="page-content">
+
+
+        <!-- ABOUT HEADER -->
+
+        <div class="page-header">
+
+            <div class="container">
+
+                <h1>About AgriMind</h1>
+
+                <p>
+                    Empowering farmers with the power of data and artificial intelligence
+                </p>
+
+
+                <div class="header-decoration">
+
+                    <div class="decoration-item">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+
+                    <div class="decoration-item">
+                        <i class="fas fa-brain"></i>
+                    </div>
+
+                    <div class="decoration-item">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ABOUT CONTENT -->
+
+        <div class="container about-content">
+        <section class="about-section">
+
+                <div class="section-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+
+
+                <div class="section-content">
+
+                    <h2>Problem Statement</h2>
+
+                    <p>
+                        Farmers in India often rely on traditional farming practices,
+                        which can lead to suboptimal crop selection, lower yields, and
+                        financial instability. They face challenges in accessing accurate,
+                        localized information about which crops are best suited for their
+                        specific soil type, climate conditions, and market demand.
+                    </p>
+
+
+                    <div class="problem-stats">
+
+                        <div class="stat">
+                            <h3>60%</h3>
+                            <p>Farmers rely on traditional methods</p>
+                        </div>
+
+                        <div class="stat">
+                            <h3>40%</h3>
+                            <p>Experience crop selection issues</p>
+                        </div>
+
+                        <div class="stat">
+                            <h3>30%</h3>
+                            <p>Face financial instability</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- OUR MISSION -->
+
+            <section class="about-section">
+
+                <div class="section-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+
+
+                <div class="section-content">
+
+                    <h2>Our Mission</h2>
+
+                    <p>
+                        AgriMind aims to bridge this information gap by providing a simple,
+                        accessible, and data-driven tool. Our AI-powered recommendation engine
+                        analyzes various parameters—soil health, weather patterns, rainfall,
+                        and market prices—to suggest the most profitable and sustainable crops
+                        for farmers, helping them make informed decisions and improve their livelihoods.
+                    </p>
+
+
+                    <div class="mission-features">
+
+                        <div class="feature">
+
+                            <i class="fas fa-robot"></i>
+
+                            <h4>AI-Powered</h4>
+
+                            <p>
+                                Advanced algorithms for accurate recommendations
+                            </p>
+
+                        </div>
+
+
+                        <div class="feature">
+
+                            <i class="fas fa-database"></i>
+
+                            <h4>Data-Driven</h4>
+
+                            <p>
+                                Based on real-time soil and weather data
+                            </p>
+
+                        </div>
+
+
+                        <div class="feature">
+
+                            <i class="fas fa-leaf"></i>
+
+                            <h4>Sustainable</h4>
+
+                            <p>
+                                Promoting environmentally responsible farming
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- HOW AGRIMIND HELPS -->
+
+            <section class="about-section">
+
+                <div class="section-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+
+
+                <div class="section-content">
+
+                    <h2>How AgriMind Helps</h2>
+
+                    <p>
+                        AgriMind combines agricultural knowledge with artificial intelligence
+                        to help farmers make smarter and more informed crop decisions.
+                    </p>
+
+
+                    <div class="benefits-grid">
+
+                        <div class="benefit">
+
+                            <i class="fas fa-seedling"></i>
+
+                            <h4>Better Crop Selection</h4>
+
+                            <p>
+                                Recommendations based on soil and environmental conditions.
+                            </p>
+
+                        </div>
+
+
+                        <div class="benefit">
+
+                            <i class="fas fa-cloud-sun"></i>
+
+                            <h4>Weather Insights</h4>
+
+                            <p>
+                                Better decisions using weather and climate information.
+                            </p>
+
+                        </div>
+
+
+                        <div class="benefit">
+
+                            <i class="fas fa-chart-line"></i>
+
+                            <h4>Improved Productivity</h4>
+
+                            <p>
+                                Helping farmers improve yield and profitability.
+                            </p>
+
+                        </div>
+
+
+                        <div class="benefit">
+
+                            <i class="fas fa-language"></i>
+
+                            <h4>Accessible</h4>
+
+                            <p>
+                                Designed with multilingual support for farmers.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- VISION -->
+
+            <section class="team-section">
+
+                <h2>Our Vision</h2>
+
+                <p class="vision-text">
+
+                    We envision a future where every farmer in India has access to
+                    cutting-edge agricultural technology, enabling sustainable farming
+                    practices and prosperous rural communities.
+
+                </p>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+
+                <div class="footer-brand">
+
+                    <a href="/" class="logo">
+                        <i class="fas fa-leaf"></i>
+                        AgriMind
+                    </a>
+
+                    <p>
+                        Empowering farmers with AI-driven agricultural insights.
+                    </p>
+
+                </div>
+
+
+
+                <div class="footer-links">
+
+
+                    <div class="footer-column">
+
+                        <h4>Quick Links</h4>
+
+                        <ul>
+
+                            <li><a href="/">Home</a></li>
+
+                            <li><a href="/dashboard">Dashboard</a></li>
+
+                            <li><a href="/about">About</a></li>
+
+                        </ul>
+
+                    </div>
+
+
+
+                    <div class="footer-column">
+
+                        <h4>Resources</h4>
+
+                        <ul>
+
+                            <li><a href="/analytics">Analytics</a></li>
+
+                            <li><a href="/feedback">Feedback</a></li>
+
+                            <li><a href="#">Help Center</a></li>
+
+                        </ul>
+
+                    </div>
+
+
+
+                    <div class="footer-column">
+
+                        <h4>Contact</h4>
+
+                        <ul>
+
+                            <li>
+                                <a href="mailto:support@agrimind.dev">
+                                    support@agrimind.dev
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="tel:+911234567890">
+                                    +91 123 456 7890
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; 2025 AgriMind. All Rights Reserved.
+                </p>
+
+
+                <div class="social-icons">
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <a href="#" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="/js/main.js"></script>
+
+</body>
+</html>

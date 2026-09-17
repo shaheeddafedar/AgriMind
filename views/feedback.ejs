@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feedback - AgriMind</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Shared website CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Feedback page CSS -->
+    <link rel="stylesheet" href="/css/feedback.css">
+</head>
+
+<body class="feedback-page">
+
+    <!-- =========================================
+         NAVBAR
+         Same structure as About page
+    ========================================== -->
+
+    <header class="navbar">
+
+        <div class="container">
+
+            <a href="/" class="logo">
+                <i class="fas fa-leaf"></i> AgriMind
+            </a>
+
+
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+
+            <ul class="nav-links" id="nav-links">
+
+                <li>
+                    <a href="/">
+                        <%= __('nav_home') %>
+                    </a>
+                </li>
+
+
+                <% if (isLoggedIn) { %>
+
+                    <li id="dashboard-link">
+                        <a href="/dashboard">
+                            <%= __('nav_dashboard') %>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/feedback">
+                            <%= __('nav_feedback') %>
+                        </a>
+                    </li>
+
+                <% } else { %>
+
+                    <li id="dashboard-link" style="display:none;">
+                        <a href="/dashboard">
+                            <%= __('nav_dashboard') %>
+                        </a>
+                    </li>
+
+                <% } %>
+
+                <li><a href="/irrigation">Irrigation</a></li>
+                <li>
+                    <a href="/about">
+                        <%= __('nav_about') %>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="/analytics">
+                        <%= __('nav_analytics') %>
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- Authentication -->
+
+            <div class="auth-buttons">
+
+                <% if (isLoggedIn && user) { %>
+
+                    <div class="user-nav-profile">
+
+                        <img
+                            src="<%= user.profilePhoto %>"
+                            alt="User"
+                            class="nav-avatar"
+                        >
+
+                        <span class="nav-username">
+
+                            <%= user.name %>
+
+                            <i class="fas fa-caret-down"></i>
+
+                        </span>
+
+
+                        <div class="user-dropdown-menu">
+
+                            <a href="/profile">
+                                <i class="fas fa-user-circle"></i>
+                                View Profile
+                            </a>
+
+                            <a href="/dashboard">
+                                <i class="fas fa-seedling"></i>
+                                Dashboard
+                            </a>
+
+                            <!--<a href="/download-report">
+                                <i class="fas fa-file-pdf"></i>
+                                Download Report
+                            </a>-->
+
+
+                            <form
+                                action="/logout"
+                                method="POST"
+                                style="margin: 0;"
+                            >
+
+                                <button
+                                    type="submit"
+                                    style="font-family: inherit;"
+                                >
+
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                <% } else { %>
+
+                    <a
+                        href="#"
+                        class="btn btn-secondary"
+                        id="login-btn"
+                    >
+                        Log In
+                    </a>
+
+
+                    <a
+                        href="/signup"
+                        class="btn"
+                        id="register-btn"
+                    >
+                        Sign Up
+                    </a>
+
+                <% } %>
+
+            </div>
+
+
+            <!-- Language Dropdown -->
+
+            <li
+                class="dropdown"
+                style="list-style: none; margin-left: 20px;"
+            >
+
+                <a href="#" class="dropbtn">
+
+                    <i class="fas fa-globe"></i>
+                    Language
+
+                </a>
+
+
+                <div class="dropdown-content">
+
+                    <a href="/lang/en">English</a>
+
+                    <a href="/lang/hi">
+                        हिन्दी (Hindi)
+                    </a>
+
+                    <a href="/lang/kn">
+                        ಕನ್ನಡ (Kannada)
+                    </a>
+
+                </div>
+
+            </li>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="page-content">
+
+
+        <!-- =====================================
+             FULL WIDTH FEEDBACK HEADER
+
+             Same structure as About page
+        ====================================== -->
+
+        <div class="page-header feedback-page-header">
+
+            <div class="container">
+
+                <h1>Share Your Feedback</h1>
+
+                <p>
+                    Help us improve our service for farmers everywhere.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             FEEDBACK CONTENT
+        ====================================== -->
+
+        <div class="container feedback-content-container">
+
+
+            <!-- =================================
+                 FEEDBACK FORM
+            ================================== -->
+
+            <div class="feedback-form-container">
+
+                <h3>
+                    Submit Your Feedback
+                </h3>
+
+
+                <form id="feedback-form">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            required
+                        >
+
+                        
+
+                    </div>
+
+
+
+                    <!-- RATING -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Rating
+                        </label>
+
+
+                        <div class="star-rating">
+
+                            <span
+                                class="star"
+                                data-value="1"
+                            >☆</span>
+
+                            <span
+                                class="star"
+                                data-value="2"
+                            >☆</span>
+
+                            <span
+                                class="star"
+                                data-value="3"
+                            >☆</span>
+
+                            <span
+                                class="star"
+                                data-value="4"
+                            >☆</span>
+
+                            <span
+                                class="star"
+                                data-value="5"
+                            >☆</span>
+
+                        </div>
+
+
+                        <input
+                            type="hidden"
+                            id="rating"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="comment">
+                            Comment
+                        </label>
+
+
+                        <textarea
+                            id="comment"
+                            rows="4"
+                            required
+                        ></textarea>
+                    </div>
+                    <button
+                        type="submit"
+                        class="btn btn-submit"
+                    >
+
+                        <span class="btn-text">
+
+                            Submit Feedback
+
+                        </span>
+
+
+                        <div class="btn-loading hidden">
+
+                            <i class="fas fa-spinner fa-spin"></i>
+
+                            Processing...
+
+                        </div>
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- =================================
+                 RECENT FEEDBACK
+            ================================== -->
+
+            <section class="recent-feedback-section">
+
+                <div class="section-header">
+
+                    <h2>
+                        What Other Farmers Are Saying
+                    </h2>
+
+                </div>
+
+
+                <div
+                    id="recent-feedback"
+                    class="feedback-grid"
+                >
+
+                    <div class="loading-spinner">
+
+                        <i class="fas fa-spinner fa-spin"></i>
+
+                        <p>
+                            Loading feedback...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PAGINATION -->
+
+                <div
+                    class="pagination hidden"
+                    id="pagination"
+                >
+
+                    <button
+                        id="prev-page"
+                        class="pagination-btn"
+                    >
+                        Previous
+                    </button>
+
+
+                    <span id="page-info"></span>
+
+
+                    <button
+                        id="next-page"
+                        class="pagination-btn"
+                    >
+                        Next
+                    </button>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+         Same structure as About page
+    ========================================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+
+                <div class="footer-brand">
+
+                    <a href="/" class="logo">
+
+                        <i class="fas fa-leaf"></i>
+                        AgriMind
+
+                    </a>
+
+
+                    <p>
+                        Empowering farmers with AI-driven agricultural insights.
+                    </p>
+
+                </div>
+
+
+
+                <div class="footer-links">
+
+
+                    <div class="footer-column">
+
+                        <h4>Quick Links</h4>
+
+                        <ul>
+
+                            <li>
+                                <a href="/">
+                                    Home
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/dashboard">
+                                    Dashboard
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/about">
+                                    About
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+
+                    <div class="footer-column">
+
+                        <h4>Resources</h4>
+
+                        <ul>
+
+                            <li>
+                                <a href="/analytics">
+                                    Analytics
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/feedback">
+                                    Feedback
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    Help Center
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+
+                    <div class="footer-column">
+
+                        <h4>Contact</h4>
+
+                        <ul>
+
+                            <li>
+                                <a href="mailto:support@agrimind.dev">
+                                    support@agrimind.dev
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="tel:+911234567890">
+                                    +91 123 456 7890
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; 2025 AgriMind. All Rights Reserved.
+                </p>
+
+
+                <div class="social-icons">
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <a href="#" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script src="/js/main.js"></script>
+    <script src="/js/feedback.js"></script>
+
+</body>
+</html>

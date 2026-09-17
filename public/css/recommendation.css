@@ -1,0 +1,100 @@
+.result-header {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.result-header h2 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.result-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.recommended-crop {
+    grid-column: 1 / -1; 
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+}
+
+.recommended-crop h3 {
+    font-size: 1.8rem;
+}
+.recommended-crop #crop-name {
+    font-weight: 700;
+    border-bottom: 2px dotted var(--secondary-color);
+    text-transform: capitalize;
+}
+.recommended-crop .reason {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.result-card h4 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.result-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.result-card ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.large-card {
+    grid-column: span 2;
+}
+
+.financials {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+.actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .result-grid, .large-card {
+        grid-template-columns: 1fr;
+        grid-column: auto;
+    }
+}
+
+.reason h4 {
+    color: white;
+}
+
+.reason h4 i {
+    color: yellow;
+}

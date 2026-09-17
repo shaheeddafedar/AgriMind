@@ -1,0 +1,32 @@
+AgriMind Robust Crop Model - Validation Report
+
+Development validation protocol:
+- Base V5 dataset: 6949 rows, 44 crop classes
+- External dataset: 5000 rows, 10 crop classes
+- For each seed, 20% of the external dataset was held out and NEVER used for that validation model.
+- Training = all V5 data + 80% external data.
+- Model = ExtraTreesClassifier, 350 trees, entropy, sqrt features,
+  balanced_subsample, random_state=42.
+- Inputs = N, P, K, temperature, humidity, ph, rainfall.
+
+External holdout results:
+Seed 1: accuracy=78.70%, macro-F1=71.22%
+Seed 7: accuracy=80.50%, macro-F1=72.90%
+Seed 21: accuracy=78.70%, macro-F1=65.44%
+Seed 42: accuracy=78.60%, macro-F1=71.04%
+Seed 99: accuracy=79.90%, macro-F1=72.42%
+
+Mean external accuracy: 79.28%
+Sample standard deviation: 0.87 percentage points
+Mean external macro-F1: 70.60%
+
+Final deployment candidate:
+- Trained on all V5 + all external development data.
+- This final model should NOT be evaluated on the same 5,000 external rows as an
+  independent test after deployment, because it has now seen them.
+- The validation numbers above are the evidence for the adaptation step.
+
+Important limitation:
+- The external dataset has not been independently verified as raw field-collected
+  ground truth. Therefore these results demonstrate improved robustness to that
+  dataset's distribution, not guaranteed real-world agricultural accuracy.

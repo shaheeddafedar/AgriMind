@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Crop Recommendation - AgriMind</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/recommendation.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a href="/" class="logo"><i class="fas fa-leaf"></i> AgriMind</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="crop-result">
+        <div class="result-header">
+            <h2>Your AI-Powered Recommendation is Ready!</h2>
+            <p>Based on your inputs, we recommend the following crop for optimal results.</p>
+        </div>
+
+        <div class="result-grid">
+            <div class="result-card recommended-crop">
+                <h3>Recommended Crop: <span id="crop-name"></span></h3>
+                <div class="reason">
+                <h4>
+                    <i class="fas fa-lightbulb"></i>
+                    Why was this crop recommended?
+                </h4>
+
+                <ul id="crop-reasons"></ul>
+            </div>
+            </div>
+
+           <div class="result-card large-card">
+    <h4>
+        <i class="fas fa-brain"></i>
+        AI Model Explanation
+    </h4>
+
+    <ul id="model-xai"></ul>
+</div>
+
+            <div class="result-card">
+                <h4><i class="fas fa-chart-line"></i> Key Metrics (Estimated)</h4>
+                <ul>
+                    <li><strong>Yield:</strong> <span id="yield"></span> Tonnes/Hectare</li>
+                    <li><strong>Sustainability Score:</strong> <span id="sustainability"></span>/100</li>
+                    <li><strong>Profit Potential:</strong> <span id="profit-potential"></span></li>
+                </ul>
+            </div>
+
+            <div class="result-card large-card">
+                <h4><i class="fas fa-dollar-sign"></i> Financial Projections</h4>
+                <p class="estimate-note">
+                    <i class="fas fa-info-circle"></i>
+                    Approximate estimate based on the selected crop, farm area,
+                    estimated cultivation costs and latest available market price.
+                    Actual values may vary.
+                </p>
+                <div class="financials">
+                    <p><strong>Gross Revenue:</strong> ₹<span id="gross-revenue"></span></p>
+                    <p><strong>Investment:</strong> ₹<span id="investment"></span></p>
+                    <p><strong>Net Profit:</strong> ₹<span id="net-profit"></span></p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="profit-pie-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="result-card large-card">
+                 <h4><i class="fas fa-tractor"></i> Yield Comparison (Tonnes per Hectare)</h4>
+                 <div class="chart-container">
+                    <canvas id="yield-bar-chart"></canvas>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- ==========================================
+     FERTILIZER RESULT
+     ========================================== -->
+
+<div id="fertilizer-result" style="display: none;">
+
+    <div class="result-header">
+        <h2>Your Fertilizer Recommendation is Ready!</h2>
+        <p>Based on your crop and soil nutrient values, here is your fertilizer recommendation.</p>
+    </div>
+
+    <div class="result-grid">
+
+        <div class="result-card recommended-crop">
+            <h3>
+                Crop: <span id="fertilizer-crop-name"></span>
+            </h3>
+
+            <div class="reason">
+                <h4>
+                    <i class="fas fa-flask"></i>
+                    Recommended Fertilizer
+                </h4>
+
+                <div id="fertilizer-recommendations"></div>
+            </div>
+        </div>
+
+        <div class="result-card">
+            <h4>
+                <i class="fas fa-seedling"></i>
+                Soil Status
+            </h4>
+
+            <ul id="fertilizer-soil-status"></ul>
+        </div>
+
+        <div class="result-card">
+            <h4>
+                <i class="fas fa-exclamation-circle"></i>
+                Nutrient Priority
+            </h4>
+
+            <ul id="fertilizer-priority"></ul>
+        </div>
+
+        <div class="result-card large-card">
+            <h4>
+                <i class="fas fa-brain"></i>
+                Why this recommendation?
+            </h4>
+
+            <ul id="fertilizer-xai"></ul>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="actions">
+            <a href="/dashboard" class="btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        </div>
+    </main>
+<br>
+ 
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="logo"><i class="fas fa-leaf"></i> AgriMind</a>
+                    <p>Empowering farmers with AI-driven agricultural insights.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/dashboard">Dashboard</a></li>
+                            <li><a href="/about">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="/analytics">Analytics</a></li>
+                            <li><a href="/feedback">Feedback</a></li>
+                            <li><a href="#">Help Center</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="mailto:support@agrimind.dev">support@agrimind.dev</a></li>
+                            <li><a href="tel:+911234567890">+91 123 456 7890</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AgriMind. All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/recommendation.js"></script>
+</body>
+</html>
