@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Feedback - AgriMind</title>
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Shared website CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -53,36 +53,36 @@
                             <%= __('nav_dashboard') %>
                         </a>
                     </li>
-
+                    <li><a href="/irrigation">Irrigation</a></li>
                     <li>
                         <a href="/feedback">
                             <%= __('nav_feedback') %>
                         </a>
                     </li>
 
-                <% } else { %>
 
-                    <li id="dashboard-link" style="display:none;">
-                        <a href="/dashboard">
-                            <%= __('nav_dashboard') %>
-                        </a>
-                    </li>
+                    <% } else { %>
 
-                <% } %>
+                        <li id="dashboard-link" style="display:none;">
+                            <a href="/dashboard">
+                                <%= __('nav_dashboard') %>
+                            </a>
+                        </li>
 
-                <li><a href="/irrigation">Irrigation</a></li>
-                <li>
-                    <a href="/about">
-                        <%= __('nav_about') %>
-                    </a>
-                </li>
+                        <% } %>
+
+                            <li>
+                                <a href="/about">
+                                    <%= __('nav_about') %>
+                                </a>
+                            </li>
 
 
-                <li>
-                    <a href="/analytics">
-                        <%= __('nav_analytics') %>
-                    </a>
-                </li>
+                            <li>
+                                <a href="/analytics">
+                                    <%= __('nav_analytics') %>
+                                </a>
+                            </li>
 
             </ul>
 
@@ -95,17 +95,13 @@
 
                     <div class="user-nav-profile">
 
-                        <img
-                            src="<%= user.profilePhoto %>"
-                            alt="User"
-                            class="nav-avatar"
-                        >
+                        <img src="<%= user.profilePhoto %>" alt="User" class="nav-avatar">
 
                         <span class="nav-username">
 
                             <%= user.name %>
 
-                            <i class="fas fa-caret-down"></i>
+                                <i class="fas fa-caret-down"></i>
 
                         </span>
 
@@ -128,16 +124,9 @@
                             </a>-->
 
 
-                            <form
-                                action="/logout"
-                                method="POST"
-                                style="margin: 0;"
-                            >
+                            <form action="/logout" method="POST" style="margin: 0;">
 
-                                <button
-                                    type="submit"
-                                    style="font-family: inherit;"
-                                >
+                                <button type="submit" style="font-family: inherit;">
 
                                     <i class="fas fa-sign-out-alt"></i>
                                     Logout
@@ -150,36 +139,25 @@
 
                     </div>
 
-                <% } else { %>
+                    <% } else { %>
 
-                    <a
-                        href="#"
-                        class="btn btn-secondary"
-                        id="login-btn"
-                    >
-                        Log In
-                    </a>
+                        <a href="#" class="btn btn-secondary" id="login-btn">
+                            Log In
+                        </a>
 
 
-                    <a
-                        href="/signup"
-                        class="btn"
-                        id="register-btn"
-                    >
-                        Sign Up
-                    </a>
+                        <a href="/signup" class="btn" id="register-btn">
+                            Sign Up
+                        </a>
 
-                <% } %>
+                        <% } %>
 
             </div>
 
 
             <!-- Language Dropdown -->
 
-            <li
-                class="dropdown"
-                style="list-style: none; margin-left: 20px;"
-            >
+            <li class="dropdown" style="list-style: none; margin-left: 20px;">
 
                 <a href="#" class="dropbtn">
 
@@ -269,13 +247,9 @@
                             Your Name
                         </label>
 
-                        <input
-                            type="text"
-                            id="name"
-                            required
-                        >
+                        <input type="text" id="name" required>
 
-                        
+
 
                     </div>
 
@@ -292,39 +266,20 @@
 
                         <div class="star-rating">
 
-                            <span
-                                class="star"
-                                data-value="1"
-                            >☆</span>
+                            <span class="star" data-value="1">☆</span>
 
-                            <span
-                                class="star"
-                                data-value="2"
-                            >☆</span>
+                            <span class="star" data-value="2">☆</span>
 
-                            <span
-                                class="star"
-                                data-value="3"
-                            >☆</span>
+                            <span class="star" data-value="3">☆</span>
 
-                            <span
-                                class="star"
-                                data-value="4"
-                            >☆</span>
+                            <span class="star" data-value="4">☆</span>
 
-                            <span
-                                class="star"
-                                data-value="5"
-                            >☆</span>
+                            <span class="star" data-value="5">☆</span>
 
                         </div>
 
 
-                        <input
-                            type="hidden"
-                            id="rating"
-                            required
-                        >
+                        <input type="hidden" id="rating" required>
                     </div>
 
                     <div class="form-group">
@@ -334,16 +289,9 @@
                         </label>
 
 
-                        <textarea
-                            id="comment"
-                            rows="4"
-                            required
-                        ></textarea>
+                        <textarea id="comment" rows="4" required></textarea>
                     </div>
-                    <button
-                        type="submit"
-                        class="btn btn-submit"
-                    >
+                    <button type="submit" class="btn btn-submit">
 
                         <span class="btn-text">
 
@@ -384,10 +332,7 @@
                 </div>
 
 
-                <div
-                    id="recent-feedback"
-                    class="feedback-grid"
-                >
+                <div id="recent-feedback" class="feedback-grid">
 
                     <div class="loading-spinner">
 
@@ -405,15 +350,9 @@
 
                 <!-- PAGINATION -->
 
-                <div
-                    class="pagination hidden"
-                    id="pagination"
-                >
+                <div class="pagination hidden" id="pagination">
 
-                    <button
-                        id="prev-page"
-                        class="pagination-btn"
-                    >
+                    <button id="prev-page" class="pagination-btn">
                         Previous
                     </button>
 
@@ -421,10 +360,7 @@
                     <span id="page-info"></span>
 
 
-                    <button
-                        id="next-page"
-                        class="pagination-btn"
-                    >
+                    <button id="next-page" class="pagination-btn">
                         Next
                     </button>
 
@@ -564,7 +500,7 @@
             <div class="footer-bottom">
 
                 <p>
-                    &copy; 2025 AgriMind. All Rights Reserved.
+                    &copy; 2026 AgriMind. All Rights Reserved.
                 </p>
 
 
@@ -602,4 +538,5 @@
     <script src="/js/feedback.js"></script>
 
 </body>
+
 </html>

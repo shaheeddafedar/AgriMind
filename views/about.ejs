@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= locale || 'en' %>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>About Us - AgriMind</title>
+    <title><%= __('about_page_title') %></title>
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -32,33 +32,51 @@
             <ul class="nav-links" id="nav-links">
 
                 <li>
-                    <a href="/"><%= __('nav_home') %></a>
+                    <a href="/">
+                        <%= __('nav_home') %>
+                    </a>
                 </li>
 
                 <% if (isLoggedIn) { %>
 
                     <li id="dashboard-link">
-                        <a href="/dashboard"><%= __('nav_dashboard') %></a>
+                        <a href="/dashboard">
+                            <%= __('nav_dashboard') %>
+                        </a>
                     </li>
 
                     <li>
-                        <a href="/feedback"><%= __('nav_feedback') %></a>
+                        <a href="/irrigation">
+                            <%= __('nav_irrigation') %>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/feedback">
+                            <%= __('nav_feedback') %>
+                        </a>
                     </li>
 
                 <% } else { %>
 
                     <li id="dashboard-link" style="display:none;">
-                        <a href="/dashboard"><%= __('nav_dashboard') %></a>
+                        <a href="/dashboard">
+                            <%= __('nav_dashboard') %>
+                        </a>
                     </li>
 
                 <% } %>
-                <li><a href="/irrigation">Irrigation</a></li>
+
                 <li>
-                    <a href="/about"><%= __('nav_about') %></a>
+                    <a href="/about">
+                        <%= __('nav_about') %>
+                    </a>
                 </li>
 
                 <li>
-                    <a href="/analytics"><%= __('nav_analytics') %></a>
+                    <a href="/analytics">
+                        <%= __('nav_analytics') %>
+                    </a>
                 </li>
 
             </ul>
@@ -74,7 +92,7 @@
 
                         <img
                             src="<%= user.profilePhoto %>"
-                            alt="User"
+                            alt="<%= __('user_profile') %>"
                             class="nav-avatar"
                         >
 
@@ -87,24 +105,19 @@
 
                             <a href="/profile">
                                 <i class="fas fa-user-circle"></i>
-                                View Profile
+                                <%= __('view_profile') %>
                             </a>
 
                             <a href="/dashboard">
                                 <i class="fas fa-seedling"></i>
-                                Dashboard
+                                <%= __('nav_dashboard') %>
                             </a>
-
-                            <!--<a href="/download-report">
-                                <i class="fas fa-file-pdf"></i>
-                                Download Report
-                            </a>-->
 
                             <form action="/logout" method="POST" style="margin: 0;">
 
                                 <button type="submit" style="font-family: inherit;">
                                     <i class="fas fa-sign-out-alt"></i>
-                                    Logout
+                                    <%= __('nav_logout') %>
                                 </button>
 
                             </form>
@@ -116,11 +129,11 @@
                 <% } else { %>
 
                     <a href="#" class="btn btn-secondary" id="login-btn">
-                        Log In
+                        <%= __('nav_login') %>
                     </a>
 
                     <a href="/signup" class="btn" id="register-btn">
-                        Sign Up
+                        <%= __('nav_signup') %>
                     </a>
 
                 <% } %>
@@ -134,20 +147,27 @@
 
                 <a href="#" class="dropbtn">
                     <i class="fas fa-globe"></i>
-                    Language
+                    <%= __('language') %>
                 </a>
 
                 <div class="dropdown-content">
+
                     <a href="/lang/en">English</a>
-                    <a href="/lang/hi">हिन्दी (Hindi)</a>
-                    <a href="/lang/kn">ಕನ್ನಡ (Kannada)</a>
+
+                    <a href="/lang/hi">
+                        हिन्दी (Hindi)
+                    </a>
+
+                    <a href="/lang/kn">
+                        ಕನ್ನಡ (Kannada)
+                    </a>
+
                 </div>
 
             </li>
 
         </div>
     </header>
-
 
 
     <!-- ================= MAIN ================= -->
@@ -161,12 +181,13 @@
 
             <div class="container">
 
-                <h1>About AgriMind</h1>
+                <h1>
+                    <%= __('about_title') %>
+                </h1>
 
                 <p>
-                    Empowering farmers with the power of data and artificial intelligence
+                    <%= __('about_subtitle') %>
                 </p>
-
 
                 <div class="header-decoration">
 
@@ -189,45 +210,50 @@
         </div>
 
 
-
         <!-- ABOUT CONTENT -->
 
         <div class="container about-content">
-        <section class="about-section">
+
+
+            <!-- PROBLEM STATEMENT -->
+
+            <section class="about-section">
 
                 <div class="section-icon">
                     <i class="fas fa-exclamation-triangle"></i>
                 </div>
 
-
                 <div class="section-content">
 
-                    <h2>Problem Statement</h2>
+                    <h2>
+                        <%= __('problem_title') %>
+                    </h2>
 
                     <p>
-                        Farmers in India often rely on traditional farming practices,
-                        which can lead to suboptimal crop selection, lower yields, and
-                        financial instability. They face challenges in accessing accurate,
-                        localized information about which crops are best suited for their
-                        specific soil type, climate conditions, and market demand.
+                        <%= __('problem_desc') %>
                     </p>
-
 
                     <div class="problem-stats">
 
                         <div class="stat">
                             <h3>60%</h3>
-                            <p>Farmers rely on traditional methods</p>
+                            <p>
+                                <%= __('problem_stat_1') %>
+                            </p>
                         </div>
 
                         <div class="stat">
                             <h3>40%</h3>
-                            <p>Experience crop selection issues</p>
+                            <p>
+                                <%= __('problem_stat_2') %>
+                            </p>
                         </div>
 
                         <div class="stat">
                             <h3>30%</h3>
-                            <p>Face financial instability</p>
+                            <p>
+                                <%= __('problem_stat_3') %>
+                            </p>
                         </div>
 
                     </div>
@@ -235,7 +261,6 @@
                 </div>
 
             </section>
-
 
 
             <!-- OUR MISSION -->
@@ -246,56 +271,65 @@
                     <i class="fas fa-bullseye"></i>
                 </div>
 
-
                 <div class="section-content">
 
-                    <h2>Our Mission</h2>
+                    <h2>
+                        <%= __('mission_title') %>
+                    </h2>
 
                     <p>
-                        AgriMind aims to bridge this information gap by providing a simple,
-                        accessible, and data-driven tool. Our AI-powered recommendation engine
-                        analyzes various parameters—soil health, weather patterns, rainfall,
-                        and market prices—to suggest the most profitable and sustainable crops
-                        for farmers, helping them make informed decisions and improve their livelihoods.
+                        <%= __('mission_desc') %>
                     </p>
 
-
                     <div class="mission-features">
+
+
+                        <!-- AI POWERED -->
 
                         <div class="feature">
 
                             <i class="fas fa-robot"></i>
 
-                            <h4>AI-Powered</h4>
+                            <h4>
+                                <%= __('mission_ai_title') %>
+                            </h4>
 
                             <p>
-                                Advanced algorithms for accurate recommendations
+                                <%= __('mission_ai_desc') %>
                             </p>
 
                         </div>
 
+
+                        <!-- DATA DRIVEN -->
 
                         <div class="feature">
 
                             <i class="fas fa-database"></i>
 
-                            <h4>Data-Driven</h4>
+                            <h4>
+                                <%= __('mission_data_title') %>
+                            </h4>
 
                             <p>
-                                Based on real-time soil and weather data
+                                <%= __('mission_data_desc') %>
                             </p>
 
                         </div>
 
 
+                        <!-- SUSTAINABLE -->
+
                         <div class="feature">
 
                             <i class="fas fa-leaf"></i>
 
-                            <h4>Sustainable</h4>
+                            <h4>
+                                <%= __('mission_sustainable_title') %>
+                            </h4>
 
                             <p>
-                                Promoting environmentally responsible farming
+                                <%= __('mission_sustainable_desc') %>
                             </p>
 
                         </div>
@@ -305,7 +339,6 @@
                 </div>
 
             </section>
-
 
 
             <!-- HOW AGRIMIND HELPS -->
@@ -316,66 +349,82 @@
                     <i class="fas fa-lightbulb"></i>
                 </div>
 
-
                 <div class="section-content">
 
-                    <h2>How AgriMind Helps</h2>
+                    <h2>
+                        <%= __('helps_title') %>
+                    </h2>
 
                     <p>
-                        AgriMind combines agricultural knowledge with artificial intelligence
-                        to help farmers make smarter and more informed crop decisions.
+                        <%= __('helps_desc') %>
                     </p>
 
-
                     <div class="benefits-grid">
+
+
+                        <!-- BETTER CROP SELECTION -->
 
                         <div class="benefit">
 
                             <i class="fas fa-seedling"></i>
 
-                            <h4>Better Crop Selection</h4>
+                            <h4>
+                                <%= __('benefit_crop_title') %>
+                            </h4>
 
                             <p>
-                                Recommendations based on soil and environmental conditions.
+                                <%= __('benefit_crop_desc') %>
                             </p>
 
                         </div>
 
+
+                        <!-- WEATHER INSIGHTS -->
 
                         <div class="benefit">
 
                             <i class="fas fa-cloud-sun"></i>
 
-                            <h4>Weather Insights</h4>
+                            <h4>
+                                <%= __('benefit_weather_title') %>
+                            </h4>
 
                             <p>
-                                Better decisions using weather and climate information.
+                                <%= __('benefit_weather_desc') %>
                             </p>
 
                         </div>
 
+
+                        <!-- IMPROVED PRODUCTIVITY -->
 
                         <div class="benefit">
 
                             <i class="fas fa-chart-line"></i>
 
-                            <h4>Improved Productivity</h4>
+                            <h4>
+                                <%= __('benefit_productivity_title') %>
+                            </h4>
 
                             <p>
-                                Helping farmers improve yield and profitability.
+                                <%= __('benefit_productivity_desc') %>
                             </p>
 
                         </div>
 
 
+                        <!-- ACCESSIBLE -->
+
                         <div class="benefit">
 
                             <i class="fas fa-language"></i>
 
-                            <h4>Accessible</h4>
+                            <h4>
+                                <%= __('benefit_accessible_title') %>
+                            </h4>
 
                             <p>
-                                Designed with multilingual support for farmers.
+                                <%= __('benefit_accessible_desc') %>
                             </p>
 
                         </div>
@@ -387,19 +436,16 @@
             </section>
 
 
-
             <!-- VISION -->
 
             <section class="team-section">
 
-                <h2>Our Vision</h2>
+                <h2>
+                    <%= __('vision_title') %>
+                </h2>
 
                 <p class="vision-text">
-
-                    We envision a future where every farmer in India has access to
-                    cutting-edge agricultural technology, enabling sustainable farming
-                    practices and prosperous rural communities.
-
+                    <%= __('vision_desc') %>
                 </p>
 
             </section>
@@ -408,7 +454,6 @@
         </div>
 
     </main>
-
 
 
     <!-- ================= FOOTER ================= -->
@@ -420,6 +465,8 @@
             <div class="footer-content">
 
 
+                <!-- FOOTER BRAND -->
+
                 <div class="footer-brand">
 
                     <a href="/" class="logo">
@@ -428,55 +475,90 @@
                     </a>
 
                     <p>
-                        Empowering farmers with AI-driven agricultural insights.
+                        <%= __('footer_desc') %>
                     </p>
 
                 </div>
 
 
+                <!-- FOOTER LINKS -->
 
                 <div class="footer-links">
 
 
+                    <!-- QUICK LINKS -->
+
                     <div class="footer-column">
 
-                        <h4>Quick Links</h4>
+                        <h4>
+                            <%= __('footer_quick_links') %>
+                        </h4>
 
                         <ul>
 
-                            <li><a href="/">Home</a></li>
+                            <li>
+                                <a href="/">
+                                    <%= __('nav_home') %>
+                                </a>
+                            </li>
 
-                            <li><a href="/dashboard">Dashboard</a></li>
+                            <li>
+                                <a href="/dashboard">
+                                    <%= __('nav_dashboard') %>
+                                </a>
+                            </li>
 
-                            <li><a href="/about">About</a></li>
+                            <li>
+                                <a href="/about">
+                                    <%= __('nav_about') %>
+                                </a>
+                            </li>
 
                         </ul>
 
                     </div>
 
 
+                    <!-- RESOURCES -->
 
                     <div class="footer-column">
 
-                        <h4>Resources</h4>
+                        <h4>
+                            <%= __('footer_resources') %>
+                        </h4>
 
                         <ul>
 
-                            <li><a href="/analytics">Analytics</a></li>
+                            <li>
+                                <a href="/analytics">
+                                    <%= __('nav_analytics') %>
+                                </a>
+                            </li>
 
-                            <li><a href="/feedback">Feedback</a></li>
+                            <li>
+                                <a href="/feedback">
+                                    <%= __('nav_feedback') %>
+                                </a>
+                            </li>
 
-                            <li><a href="#">Help Center</a></li>
+                            <li>
+                                <a href="#">
+                                    <%= __('footer_help') %>
+                                </a>
+                            </li>
 
                         </ul>
 
                     </div>
 
 
+                    <!-- CONTACT -->
 
                     <div class="footer-column">
 
-                        <h4>Contact</h4>
+                        <h4>
+                            <%= __('footer_contact') %>
+                        </h4>
 
                         <ul>
 
@@ -496,19 +578,18 @@
 
                     </div>
 
-
                 </div>
 
             </div>
 
 
+            <!-- FOOTER BOTTOM -->
 
             <div class="footer-bottom">
 
                 <p>
-                    &copy; 2025 AgriMind. All Rights Reserved.
+                    <%= __('footer_copyright') %>
                 </p>
-
 
                 <div class="social-icons">
 
@@ -535,7 +616,6 @@
         </div>
 
     </footer>
-
 
 
     <script src="/js/main.js"></script>

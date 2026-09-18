@@ -22,11 +22,11 @@
 
             <% if (isLoggedIn) { %>
                 <li id="dashboard-link"><a href="/dashboard"><%= __('nav_dashboard') %></a></li>
+                                <li><a href="/irrigation">Irrigation</a></li>
                 <li><a href="/feedback"><%= __('nav_feedback') %></a></li>
             <% } else { %>
                 <li id="dashboard-link" style="display:none;"><a href="/dashboard"><%= __('nav_dashboard') %></a></li>
             <% } %>
-                <li><a href="/irrigation">Irrigation</a></li>
             <li><a href="/about"><%= __('nav_about') %></a></li>
             <li><a href="/analytics"><%= __('nav_analytics') %></a></li>
         </ul>
@@ -68,19 +68,23 @@
     <main class="container">
         <div class="dashboard-grid">
             <section class="main-content">
-                <div class="recommendation-mode">
-                <button type="button"
-                        id="crop-mode-btn"
-                        class="btn recommendation-mode-btn active">
-                    🌾 Crop Recommendation
-                </button>
+<div class="recommendation-mode">
+    <button type="button" id="crop-mode-btn" class="recommendation-mode-btn active">
+        <span class="mode-icon">🌾</span>
+        <span class="mode-content">
+            <strong>Crop Recommendation</strong>
+            <small>Find the best crop for your farm</small>
+        </span>
+    </button>
 
-                <button type="button"
-                        id="fertilizer-mode-btn"
-                        class="btn recommendation-mode-btn">
-                    🧪 Fertilizer Recommendation
-                </button>
-            </div>
+    <button type="button" id="fertilizer-mode-btn" class="recommendation-mode-btn">
+        <span class="mode-icon">🧪</span>
+        <span class="mode-content">
+            <strong>Fertilizer Recommendation</strong>
+            <small>Find the right fertilizer for your crop</small>
+        </span>
+    </button>
+</div>
 
             <br>
 
@@ -123,11 +127,11 @@
                     </div>
                     <div class="form-group">
                         <label for="phosphorus">Phosphorus (0-150 kg/ha)</label>
-                        <input type="number" id="phosphorus" min="0" max="150" required>
+                        <input type="number" id="phosphorus" min="0" required>
                     </div>
                     <div class="form-group">
                         <label for="potassium">Potassium (0-200 kg/ha)</label>
-                        <input type="number" id="potassium" min="0" max="200" required>
+                        <input type="number" id="potassium" min="0"  required>
                     </div>
                     <div class="form-group crop-only-field">
                         <label for="temperature">Temperature (°C)</label>
@@ -248,7 +252,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 AgriMind. All Rights Reserved.</p>
+                <p>&copy; 2026 AgriMind. All Rights Reserved.</p>
                 <div class="social-icons">
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                     <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>

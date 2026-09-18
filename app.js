@@ -1,3 +1,10 @@
+const dns = require('dns');
+
+dns.setServers([
+    '1.1.1.1',
+    '8.8.8.8'
+]);
+
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
@@ -18,7 +25,7 @@ const fertilizerRoutes =
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const MONGO_URI = 'mongodb+srv://CROPAI:CROPAI123@cluster0.hengxfv.mongodb.net/?appName=Cluster0';
+const MONGO_URI = process.env.MONGO_URI;
 
 app.use(express.json());
 app.use(cookieParser());

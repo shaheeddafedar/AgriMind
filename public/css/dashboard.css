@@ -4,6 +4,122 @@
     gap: 30px;
     margin-top: 30px;
 }
+.recommendation-mode {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.recommendation-mode-btn {
+    flex: 1;
+    min-height: 90px;
+    padding: 18px 22px;
+    border: 2px solid #e2ebe4;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    font-family: 'Inter', sans-serif;
+}
+
+.recommendation-mode-btn:hover {
+    transform: translateY(-3px);
+    border-color: #4caf50;
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.12);
+}
+
+.recommendation-mode-btn.active {
+    border-color: #4caf50;
+    background: linear-gradient(135deg, #f1f8f3 0%, #e8f5ea 100%);
+    box-shadow: 0 8px 24px rgba(76, 175, 80, 0.2);
+    transform: scale(1.02);
+}
+
+.mode-icon {
+    font-size: 38px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4faf1;
+    border-radius: 14px;
+    flex-shrink: 0;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.recommendation-mode-btn.active .mode-icon {
+    background: #dff0d8;
+    transform: scale(1.05);
+}
+
+.recommendation-mode-btn:hover .mode-icon {
+    transform: scale(1.08);
+}
+
+.mode-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 4px;
+}
+
+.mode-content strong {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #1e2a1e;
+    transition: color 0.25s ease;
+}
+
+.mode-content small {
+    font-size: 13px;
+    color: #7a8a7a;
+    font-weight: 400;
+    transition: color 0.25s ease;
+}
+
+.recommendation-mode-btn.active .mode-content strong {
+    color: #1e7e34;
+}
+
+.recommendation-mode-btn.active .mode-content small {
+    color: #4a6e4a;
+}
+
+@media (max-width: 700px) {
+    .recommendation-mode {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .recommendation-mode-btn {
+        width: 100%;
+        min-height: 80px;
+        padding: 14px 18px;
+    }
+
+    .mode-icon {
+        font-size: 30px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .mode-content strong {
+        font-size: 15px;
+    }
+
+    .mode-content small {
+        font-size: 12px;
+    }
+}
 
 .main-content, .sidebar-widget {
     background: #fff;
@@ -175,7 +291,7 @@ section.main-content {
 .recommendation-mode {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 12px;
     width: 100%;
     margin-bottom: 18px;
 }
