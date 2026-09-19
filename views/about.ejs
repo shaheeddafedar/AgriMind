@@ -16,7 +16,6 @@
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
 
     <header class="navbar">
         <div class="container">
@@ -39,18 +38,21 @@
 
                 <% if (isLoggedIn) { %>
 
+                    <!-- DASHBOARD -->
                     <li id="dashboard-link">
                         <a href="/dashboard">
                             <%= __('nav_dashboard') %>
                         </a>
                     </li>
 
+                    <!-- IRRIGATION -->
                     <li>
                         <a href="/irrigation">
                             <%= __('nav_irrigation') %>
                         </a>
                     </li>
 
+                    <!-- FEEDBACK -->
                     <li>
                         <a href="/feedback">
                             <%= __('nav_feedback') %>
@@ -59,7 +61,8 @@
 
                 <% } else { %>
 
-                    <li id="dashboard-link" style="display:none;">
+                    <!-- HIDDEN DASHBOARD FOR LOGGED OUT USER -->
+                    <li id="dashboard-link" style="display: none;">
                         <a href="/dashboard">
                             <%= __('nav_dashboard') %>
                         </a>
@@ -67,12 +70,14 @@
 
                 <% } %>
 
+                <!-- ABOUT -->
                 <li>
                     <a href="/about">
                         <%= __('nav_about') %>
                     </a>
                 </li>
 
+                <!-- ANALYTICS -->
                 <li>
                     <a href="/analytics">
                         <%= __('nav_analytics') %>
@@ -81,8 +86,7 @@
 
             </ul>
 
-
-            <!-- Authentication -->
+            <!-- ================= AUTHENTICATION ================= -->
 
             <div class="auth-buttons">
 
@@ -103,16 +107,19 @@
 
                         <div class="user-dropdown-menu">
 
+                            <!-- PROFILE -->
                             <a href="/profile">
                                 <i class="fas fa-user-circle"></i>
                                 <%= __('view_profile') %>
                             </a>
 
+                            <!-- DASHBOARD -->
                             <a href="/dashboard">
                                 <i class="fas fa-seedling"></i>
                                 <%= __('nav_dashboard') %>
                             </a>
 
+                            <!-- LOGOUT -->
                             <form action="/logout" method="POST" style="margin: 0;">
 
                                 <button type="submit" style="font-family: inherit;">
@@ -128,10 +135,12 @@
 
                 <% } else { %>
 
+                    <!-- LOGIN -->
                     <a href="#" class="btn btn-secondary" id="login-btn">
                         <%= __('nav_login') %>
                     </a>
 
+                    <!-- SIGNUP -->
                     <a href="/signup" class="btn" id="register-btn">
                         <%= __('nav_signup') %>
                     </a>
@@ -140,10 +149,9 @@
 
             </div>
 
+            <!-- ================= LANGUAGE ================= -->
 
-            <!-- Language -->
-
-            <li class="dropdown" style="list-style: none; margin-left: 20px;">
+            <div class="language-selector">
 
                 <a href="#" class="dropbtn">
                     <i class="fas fa-globe"></i>
@@ -152,19 +160,21 @@
 
                 <div class="dropdown-content">
 
-                    <a href="/lang/en">English</a>
+                    <a href="/lang/en">
+                        English
+                    </a>
 
                     <a href="/lang/hi">
-                        हिन्दी (Hindi)
+                        हिन्दी
                     </a>
 
                     <a href="/lang/kn">
-                        ಕನ್ನಡ (Kannada)
+                        ಕನ್ನಡ
                     </a>
 
                 </div>
 
-            </li>
+            </div>
 
         </div>
     </header>
@@ -174,8 +184,7 @@
 
     <main class="page-content">
 
-
-        <!-- ABOUT HEADER -->
+        <!-- ================= ABOUT HEADER ================= -->
 
         <div class="page-header">
 
@@ -210,12 +219,12 @@
         </div>
 
 
-        <!-- ABOUT CONTENT -->
+        <!-- ================= ABOUT CONTENT ================= -->
 
         <div class="container about-content">
 
 
-            <!-- PROBLEM STATEMENT -->
+            <!-- ================= PROBLEM STATEMENT ================= -->
 
             <section class="about-section">
 
@@ -235,25 +244,39 @@
 
                     <div class="problem-stats">
 
+                        <!-- STAT 1 -->
                         <div class="stat">
+
                             <h3>60%</h3>
+
                             <p>
                                 <%= __('problem_stat_1') %>
                             </p>
+
                         </div>
 
+
+                        <!-- STAT 2 -->
                         <div class="stat">
+
                             <h3>40%</h3>
+
                             <p>
                                 <%= __('problem_stat_2') %>
                             </p>
+
                         </div>
 
+
+                        <!-- STAT 3 -->
                         <div class="stat">
+
                             <h3>30%</h3>
+
                             <p>
                                 <%= __('problem_stat_3') %>
                             </p>
+
                         </div>
 
                     </div>
@@ -263,7 +286,7 @@
             </section>
 
 
-            <!-- OUR MISSION -->
+            <!-- ================= OUR MISSION ================= -->
 
             <section class="about-section">
 
@@ -281,11 +304,10 @@
                         <%= __('mission_desc') %>
                     </p>
 
+
                     <div class="mission-features">
 
-
                         <!-- AI POWERED -->
-
                         <div class="feature">
 
                             <i class="fas fa-robot"></i>
@@ -302,7 +324,6 @@
 
 
                         <!-- DATA DRIVEN -->
-
                         <div class="feature">
 
                             <i class="fas fa-database"></i>
@@ -319,7 +340,6 @@
 
 
                         <!-- SUSTAINABLE -->
-
                         <div class="feature">
 
                             <i class="fas fa-leaf"></i>
@@ -341,7 +361,7 @@
             </section>
 
 
-            <!-- HOW AGRIMIND HELPS -->
+            <!-- ================= HOW AGRIMIND HELPS ================= -->
 
             <section class="about-section">
 
@@ -359,11 +379,10 @@
                         <%= __('helps_desc') %>
                     </p>
 
+
                     <div class="benefits-grid">
 
-
                         <!-- BETTER CROP SELECTION -->
-
                         <div class="benefit">
 
                             <i class="fas fa-seedling"></i>
@@ -380,7 +399,6 @@
 
 
                         <!-- WEATHER INSIGHTS -->
-
                         <div class="benefit">
 
                             <i class="fas fa-cloud-sun"></i>
@@ -397,7 +415,6 @@
 
 
                         <!-- IMPROVED PRODUCTIVITY -->
-
                         <div class="benefit">
 
                             <i class="fas fa-chart-line"></i>
@@ -414,7 +431,6 @@
 
 
                         <!-- ACCESSIBLE -->
-
                         <div class="benefit">
 
                             <i class="fas fa-language"></i>
@@ -436,7 +452,7 @@
             </section>
 
 
-            <!-- VISION -->
+            <!-- ================= VISION ================= -->
 
             <section class="team-section">
 
@@ -456,7 +472,6 @@
     </main>
 
 
-    <!-- ================= FOOTER ================= -->
 
     <footer class="footer">
 
@@ -464,9 +479,7 @@
 
             <div class="footer-content">
 
-
                 <!-- FOOTER BRAND -->
-
                 <div class="footer-brand">
 
                     <a href="/" class="logo">
@@ -481,12 +494,8 @@
                 </div>
 
 
-                <!-- FOOTER LINKS -->
 
                 <div class="footer-links">
-
-
-                    <!-- QUICK LINKS -->
 
                     <div class="footer-column">
 
@@ -519,8 +528,6 @@
                     </div>
 
 
-                    <!-- RESOURCES -->
-
                     <div class="footer-column">
 
                         <h4>
@@ -552,8 +559,6 @@
                     </div>
 
 
-                    <!-- CONTACT -->
-
                     <div class="footer-column">
 
                         <h4>
@@ -583,7 +588,6 @@
             </div>
 
 
-            <!-- FOOTER BOTTOM -->
 
             <div class="footer-bottom">
 
@@ -593,19 +597,19 @@
 
                 <div class="social-icons">
 
-                    <a href="#" aria-label="Facebook">
+                    <a href="#" aria-label="<%= __('social_facebook') %>">
                         <i class="fab fa-facebook"></i>
                     </a>
 
-                    <a href="#" aria-label="Twitter">
+                    <a href="#" aria-label="<%= __('social_twitter') %>">
                         <i class="fab fa-twitter"></i>
                     </a>
 
-                    <a href="#" aria-label="Instagram">
+                    <a href="#" aria-label="<%= __('social_instagram') %>">
                         <i class="fab fa-instagram"></i>
                     </a>
 
-                    <a href="#" aria-label="LinkedIn">
+                    <a href="#" aria-label="<%= __('social_linkedin') %>">
                         <i class="fab fa-linkedin"></i>
                     </a>
 
@@ -616,6 +620,7 @@
         </div>
 
     </footer>
+
 
 
     <script src="/js/main.js"></script>

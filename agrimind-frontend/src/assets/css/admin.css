@@ -1,0 +1,88 @@
+body {
+    background-color: #f4f7f6;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.login-box {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+.login-box .form-group {
+    margin-bottom: 15px;
+}
+.login-box label {
+    display: block;
+    margin-bottom: 5px;
+}
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.login-box .btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.admin-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: 20px;
+}
+.admin-content h2 {
+    margin-bottom: 20px;
+}
+.filters {
+    margin-bottom: 20px;
+}
+.filters input, .filters select {
+    padding: 8px;
+    margin-right: 10px;
+}
+.table-container {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+thead {
+    background-color: #f2f2f2;
+}
+.resource-upload {
+    margin-top: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}

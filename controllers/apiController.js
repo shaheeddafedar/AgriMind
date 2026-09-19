@@ -1,4 +1,5 @@
 const axios = require('axios');
+const User = require('../models/User');
 
 const {
     fetchDistrictPrices,
@@ -506,10 +507,7 @@ const CROP_MARKET_ALIASES = {
 };
 
 
-// ==========================================
-// SMART IRRIGATION THRESHOLDS
-// Prototype values for system testing
-// ==========================================
+
 
 const IRRIGATION_THRESHOLDS = {
     apple: 30,
@@ -557,9 +555,6 @@ const IRRIGATION_THRESHOLDS = {
     wheat: 30
 };
 
-// ==========================================
-// SMART IRRIGATION CHECK
-// ==========================================
 
 exports.checkIrrigation = async (req, res) => {
 
@@ -2265,3 +2260,32 @@ exports.getHistoricalRainfall = async (req, res) => {
 
 };
 
+exports.getHomeStats = async (req, res) => {
+    try {
+        const farmers = await User.countDocuments();
+
+        const crops = await Recommendation.countDocuments({
+            recommendedCrop: {
+                $exists: true,
+                $ne: null,
+                $ne: ''
+            }
+        });
+
+        res.status(200).json({
+            success: true,
+            stats: {
+                farmers,
+                crops,
+                accuracy: 95
+            }
+        });
+    } catch (error) {
+        console.error('Home stats error:', error);
+
+        res.status(500).json({
+            success: false,
+            message: 'Unable to load home statistics'
+        });
+    }
+};

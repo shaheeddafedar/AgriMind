@@ -475,9 +475,25 @@ exports.getAnalyticsData = async (req, res, next) => {
 };
 exports.getRecentRecommendations = async (req, res, next) => {
     try {
-        const recommendations = await Recommendation.find({ userId: req.params.userId }).sort({ createdAt: -1 }).limit(3);
+        console.log("Fetching recommendations for user:", req.params.userId);
+
+        const recommendations = await Recommendation.find({
+            userId: req.params.userId
+        })
+        .sort({ createdAt: -1 })
+        .limit(3);
+
+        console.log("Recommendations found:", recommendations.length);
+
         res.status(200).json(recommendations);
-    } catch (err) { res.status(500).json({ message: 'Error fetching history' }); }
+    } catch (err) {
+        console.error("GET RECENT RECOMMENDATIONS ERROR:", err);
+
+        res.status(500).json({
+            message: "Error fetching history",
+            error: err.message
+        });
+    }
 };
 
 exports.getFarmDataById = async (req, res, next) => {

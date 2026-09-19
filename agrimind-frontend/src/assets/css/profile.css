@@ -1,0 +1,142 @@
+/* profile.css */
+.profile-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.profile-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 5px solid #e8f5e9;
+}
+
+.profile-card h2 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.text-muted {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.text-muted i {
+    margin-right: 8px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 25px 0;
+}
+
+.profile-card h3 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4caf50;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.btn-full {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.btn-pdf {
+    display: block;
+    text-align: center;
+    background-color: #d32f2f;
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.btn-pdf:hover {
+    background-color: #b71c1c;
+}
+
+.btn-pdf i {
+    margin-right: 8px;
+}
+
+.history-list {
+    list-style: none;
+}
+
+.history-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s;
+}
+
+.history-item:hover {
+    background-color: #f9f9f9;
+}
+
+.history-item strong {
+    color: #2e7d32;
+    font-size: 18px;
+}
+
+.history-item small {
+    color: #666;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+}
