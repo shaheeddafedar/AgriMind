@@ -3,7 +3,6 @@ import { File, Paths } from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 
 import { getApiBaseUrl, getSessionCookie } from './api';
-
 export const pdfService = {
   downloadAndShareReport: async (
     recommendationId,
